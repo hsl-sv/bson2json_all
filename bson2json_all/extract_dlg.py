@@ -14,7 +14,7 @@ def recursive_get(data, dlg_list):
         if not (isinstance(v, dict) or isinstance(v, list)):
             continue
         elif "dlg" in v:
-            dlg_list.append(data[k]['dlg'])
+            dlg_list.append(data[k]['dlg'] + '\n')
         else:
             recursive_get(v, dlg_list)
 
