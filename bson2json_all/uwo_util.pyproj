@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c2642c85-bb79-4a31-b7b7-21af04abb60f</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>bson2json_all.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>extract_dlg.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>bson2json_all</Name>
+    <Name>uwo_util</Name>
     <RootNamespace>bson2json_all</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -22,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="bson2json_all.py" />
+    <Compile Include="extract_dlg.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
