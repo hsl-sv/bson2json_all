@@ -2,7 +2,7 @@ import glob
 import json
 import bson
 
-flist = glob.glob('D:/GameUtil/UE4/FModel/Output/Exports/Uwo/Content/NonUFS/cms/**/*.bson', recursive=True)
+flist = glob.glob('D:/UWO/unpack/NonUFS_221015/cms/**/*.bson', recursive=True)
 
 for i, bsf in enumerate(flist):
     with open(bsf,'rb') as f:
