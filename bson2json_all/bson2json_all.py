@@ -10,8 +10,8 @@ for i, bsf in enumerate(flist):
         data = bson.decode_all(f.read())
         f.close()
 
-    os.remove(bsf)
-
     with open(bsf + '.json', "w", encoding='utf-8') as fw:
         json.dump(data, fw, indent=4, sort_keys=True, ensure_ascii=False)
         fw.close()
+    
+    os.remove(bsf)
