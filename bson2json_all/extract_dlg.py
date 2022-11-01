@@ -1,4 +1,4 @@
-import enum
+﻿import enum
 import json
 import glob
 import os
