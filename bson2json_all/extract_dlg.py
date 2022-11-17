@@ -18,7 +18,7 @@ def recursive_get(data, dlg_list):
         else:
             recursive_get(v, dlg_list)
 
-flist = glob.glob('D:/UWO/unpack/NonUFS_221015/script/*.json')
+flist = glob.glob('D:/UWO/unpack/NonUFS_221117/script/*.json')
 
 for i, jsf in enumerate(flist):
     

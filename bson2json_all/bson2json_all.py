@@ -3,7 +3,7 @@ import json
 import os
 import bson
 
-flist = glob.glob('D:/UWO/unpack/NonUFS_221026/cms/**/*.bson', recursive=True)
+flist = glob.glob('D:/UWO/cmscurrent/*.bson', recursive=True)
 
 for i, bsf in enumerate(flist):
     with open(bsf,'rb') as f:

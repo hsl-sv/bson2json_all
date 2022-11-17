@@ -1,6 +1,7 @@
-﻿import glob
+import glob
 import json
 import os
+import csv
 
 PATH_ITEM = "Item_s*.json"
 PATH_STATS = "StatOperator_s*.json"
@@ -12,14 +13,15 @@ PATH = f"D:\\UWO\\cmscurrent\\"
 
 def uwo_readjson(jsonpath:list) -> dict:
     flist = glob.glob(jsonpath)
+    data_all = {}
     for i, fpath in enumerate(flist):
         fid = open(fpath, 'r', encoding='utf-8') 
-        data = json.load(fid)[0]
+        data_all.update(json.load(fid)[0])
         fid.close()
 
-    return data
+    return data_all
 
-def extract_shiptier(tier:int) -> None:
+def extract_shiptier(tier:int) -> list:
     
     # Blueprint
     matched_bp = []
@@ -29,6 +31,7 @@ def extract_shiptier(tier:int) -> None:
     for j, bplist in enumerate(shipbp_all):
         for k, v in shipbp_all[bplist].items():
             if k == 'tier' and v == tier:
+                #print(shipbp_all[bplist])
                 matched_bp.append(shipbp_all[bplist])
 
     # Item
@@ -44,32 +47,40 @@ def extract_shiptier(tier:int) -> None:
     result = []
 
     for i, blueprint in enumerate(matched_bp):
-        result_dict = {
-            '이름': '',
-            '설명': '',
-            '티어': '',
-            '최소선원수': '',
-            '최대선원수': '',
-            '최대내구도': '',
-            '적재량': '',
-            '조력': '',
-            '내파': '',
-            '세로돛': '',
-            '가로돛': '',
-            '포격위력': '',
-            '백병위력': '',
-            '충파위력': '',
-            '추가포격방어력': '',
-            '추가백병방어력': '',
-            '추가충파방어력': '',
-            '추가수리회복량': '',
-            '추가의술회복량': '',
-            }
+        ext_id = blueprint['id']
+        ext_shipid = blueprint['shipId']
+        ext_stats = blueprint['stat']
+        
+        try:
+            result_dict = {
+                '이름': ship_all[f"{ext_shipid}"]["name"],
+                '설명': ship_all[f"{ext_shipid}"]["desc"],
+                '티어': blueprint['tier'],
+                }
 
-        result.append(result_dict)
+            for i, stat in enumerate(ext_stats):
+                result_dict.update({stat_all[f"{stat['Type']}"]['desc']: stat['Val']})
 
-    pass
+            result.append(result_dict)
+        except:
+            print(f"잘못된 내용: ShipID: {ext_shipid}")
+            pass
+
+    return result
+
+def extract_shiptier_batch(cursor):
+    ext_test = extract_shiptier(cursor)
+
+    for i in range(len(ext_test)):
+        with open(f"./T{ext_test[i]['티어']}_{ext_test[i]['이름']}.csv", 'w', newline='', encoding='utf-8-sig') as out:
+            writer = csv.writer(out)
+            for k, v in ext_test[i].items():
+                writer.writerow([k, v])
+
 
 if __name__ == "__main__":
 
-    extract_shiptier(14)
+    for aa in range(40):
+        
+        extract_shiptier_batch(aa)
+    
