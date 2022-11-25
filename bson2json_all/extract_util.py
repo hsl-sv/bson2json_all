@@ -2,6 +2,7 @@
 import json
 import os
 import csv
+import PIL
 
 PATH_ITEM = "Item_s*.json"
 PATH_STATS = "StatOperator_s*.json"
@@ -77,6 +78,10 @@ def extract_shiptier_batch(cursor):
             for k, v in ext_test[i].items():
                 writer.writerow([k, v])
 
+# 그림 자르기용
+def autocrop_bakedsource():
+
+    pass
 
 if __name__ == "__main__":
 
