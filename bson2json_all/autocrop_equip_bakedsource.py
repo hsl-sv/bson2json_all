@@ -66,19 +66,17 @@ def autocrop_equip_bakedsource() -> None:
 
         nostat = False
 
-        try:
+        if "statEffect" in equip_target:
             ext_stats = equip_target['statEffect']
-        except:
+        else:
             nostat = True
             
         equip_dict = {
             '이름': equip_target['name'],
             }
 
-        try:
+        if "desc" in equip_target:
             equip_dict.update({'설명': equip_target['desc']})
-        except:
-            pass
 
         if not nostat:
             for i, stat in enumerate(ext_stats):

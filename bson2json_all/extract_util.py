@@ -10,6 +10,7 @@ PATH_EQUIP = "CEquip_s*.json"
 PATH_SHIP = "Ship_s*.json"
 PATH_SHIPBP = "ShipBlueprint_s*.json"
 PATH_SHIPSLOT = "ShipSlot_s*.json" # ShipParts
+PATH_CHARACTER = "Character_s*.json"
 
 PATH = f"D:\\UWO\\cmscurrent\\"
 

@@ -51,7 +51,7 @@ def autocrop_item_bakedsource() -> None:
         item_id = data['Name'].split('_')[2]
 
         try:
-            equip_target = item_all[item_id]
+            item_target = item_all[item_id]
         except:
             print(f"없는 아이템: {item_id}")
             ftmp = open(f"./ext/{item_id}_없는아이템.csv", 'w', newline='', encoding='utf-8-sig')
@@ -60,22 +60,19 @@ def autocrop_item_bakedsource() -> None:
             icon_im.close()
             continue
         
-        equip_dict = {
-            '이름': equip_target['name'],
+        item_dict = {
+            '이름': item_target['name'],
             }
 
-        try:
-            equip_dict.update({'설명': equip_target['desc']})
-        except:
-            pass
-        
+        if "desc" in item_target:
+            item_dict.update({'설명': item_target['desc']})
 
         icon_im.save(f"./ext/{item_id}.png")
         icon_im.close()
 
         with open(f"./ext/{item_id}.csv", 'w', newline='', encoding='utf-8-sig') as out:
             writer = csv.writer(out)
-            for k, v in equip_dict.items():
+            for k, v in item_dict.items():
                 writer.writerow([k, v])
 
     fp0.close()
