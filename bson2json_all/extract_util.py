@@ -2,13 +2,14 @@
 import json
 import os
 import csv
-import PIL
 
 PATH_ITEM = "Item_s*.json"
 PATH_STATS = "StatOperator_s*.json"
+PATH_STATS_PASSIVE = "WorldPassiveEffect_s*.json"
 PATH_EQUIP = "CEquip_s*.json"
 PATH_SHIP = "Ship_s*.json"
 PATH_SHIPBP = "ShipBlueprint_s*.json"
+PATH_SHIPSLOT = "ShipSlot_s*.json" # ShipParts
 
 PATH = f"D:\\UWO\\cmscurrent\\"
 
@@ -77,11 +78,6 @@ def extract_shiptier_batch(cursor):
             writer = csv.writer(out)
             for k, v in ext_test[i].items():
                 writer.writerow([k, v])
-
-# 그림 자르기용
-def autocrop_bakedsource():
-
-    pass
 
 if __name__ == "__main__":
 
