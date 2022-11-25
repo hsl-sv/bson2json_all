@@ -1,4 +1,4 @@
-import glob
+﻿import glob
 import json
 import os
 import csv
@@ -80,7 +80,6 @@ def extract_shiptier_batch(cursor):
 
 if __name__ == "__main__":
 
-    for aa in range(40):
+    for aa in range(99):
         
         extract_shiptier_batch(aa)
-    
