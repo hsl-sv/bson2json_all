@@ -1,8 +1,6 @@
-﻿import enum
-import json
+﻿import json
 import glob
 import os
-import numpy as np
 
 def recursive_get(data, dlg_list):
 
@@ -18,7 +16,7 @@ def recursive_get(data, dlg_list):
         else:
             recursive_get(v, dlg_list)
 
-flist = glob.glob('D:/UWO/unpack/NonUFS_221125/script/*.json')
+flist = glob.glob('D:/UWO/unpack/NonUFS_221218/script/*.json')
 
 for i, jsf in enumerate(flist):
     
