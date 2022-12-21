@@ -4,7 +4,7 @@ import json
 import csv
 import PIL.Image
 
-from extract_util import uwo_readjson, PATH, PATH_STATS_PASSIVE, PATH_STATS, PATH_EQUIP
+from extract_util import uwo_readjson, PATH, PATH_STATS_PASSIVE, PATH_STATS_SPECIAL, PATH_STATS, PATH_EQUIP
 
 def autocrop_equip_bakedsource() -> None:
 
@@ -18,6 +18,7 @@ def autocrop_equip_bakedsource() -> None:
     equip_all = uwo_readjson(os.path.join(PATH, PATH_EQUIP))
     stat_all = uwo_readjson(os.path.join(PATH, PATH_STATS))
     pasv_all = uwo_readjson(os.path.join(PATH, PATH_STATS_PASSIVE))
+    spstat_all = uwo_readjson(os.path.join(PATH, PATH_STATS_SPECIAL))
 
     # Icon_CEquip_<itemID>_<C/M/F>_Sprite.json
     # <itemID> is key of PATH_EQUIP
@@ -63,13 +64,18 @@ def autocrop_equip_bakedsource() -> None:
             icon_im.save(f"./ext/{equip_id}.png")
             icon_im.close()
             continue
-
-        nostat = False
-
+        
         if "statEffect" in equip_target:
             ext_stats = equip_target['statEffect']
+            nostat = False
         else:
             nostat = True
+
+        if "specialStat" in equip_target:
+            ext_spstats = equip_target['specialStat']
+            nospstat = False
+        else:
+            nospstat = True
             
         equip_dict = {
             '이름': equip_target['name'],
@@ -87,6 +93,16 @@ def autocrop_equip_bakedsource() -> None:
                         equip_dict.update({pasv_all[f"{stat['Id']}"]['desc']: stat['Value']})
                     except:
                         continue
+                    
+        if not nospstat:
+            for j, spstat in enumerate(ext_spstats):
+                try:
+                    for kk, vv in spstat_all.items():
+                        if vv['specialStatType'] == spstat['Type']:
+                            equip_dict.update({f"{vv['nameKey']}": spstat['Value']})
+                            continue
+                except:
+                    continue
 
         icon_im.save(f"./ext/{equip_id}.png")
         icon_im.close()

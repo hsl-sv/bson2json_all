@@ -6,6 +6,7 @@ import csv
 PATH_ITEM = "Item_s*.json"
 PATH_STATS = "StatOperator_s*.json"
 PATH_STATS_PASSIVE = "WorldPassiveEffect_s*.json"
+PATH_STATS_SPECIAL = "SpecialStat_s*.json"
 PATH_EQUIP = "CEquip_s*.json"
 PATH_SHIP = "Ship_s*.json"
 PATH_SHIPBP = "ShipBlueprint_s*.json"
