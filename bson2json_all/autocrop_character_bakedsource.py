@@ -8,14 +8,14 @@ from extract_util import uwo_readjson, PATH, PATH_CHARACTER
 
 def autocrop_character_bakedsource() -> None:
     
-    bakedsource = f"D:/UWO/unpack/221125/Character_Texture2D_0.png"
+    bakedsource = f"D:/UWO/unpack/221221/Character_Texture2D_1.png"
 
     fp0 = PIL.Image.open(bakedsource, 'r')
     char_all = uwo_readjson(os.path.join(PATH, PATH_CHARACTER))
 
     # "Name" -> "icon" in char_all
 
-    chars_js = f"D:/UWO/unpack/image_crop_221125/Atlas/Character/**/*.json"
+    chars_js = f"D:/UWO/unpack/image_crop_221221/Atlas/Character/**/*.json"
 
     flist = glob.glob(chars_js)
 

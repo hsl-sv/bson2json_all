@@ -8,7 +8,7 @@ from extract_util import uwo_readjson, PATH, PATH_ITEM
 
 def autocrop_item_bakedsource() -> None:
     
-    bakedsource = f"D:/UWO/unpack/221125/Item_Texture2D_1.png"
+    bakedsource = f"D:/UWO/unpack/221221/Item_Texture2D_11.png"
 
     fp0 = PIL.Image.open(bakedsource, 'r')
     item_all = uwo_readjson(os.path.join(PATH, PATH_ITEM))
@@ -16,7 +16,7 @@ def autocrop_item_bakedsource() -> None:
     # Icon_Item_<itemID>_Sprite.json
     # <itemID> is key of PATH_ITEM
 
-    items_js = f"D:/UWO/unpack/image_crop_221125/Atlas/Icon_Item/Item/**/*.json"
+    items_js = f"D:/UWO/unpack/image_crop_221221/Atlas/Icon_Item/Item/**/*.json"
 
     flist = glob.glob(items_js)
 

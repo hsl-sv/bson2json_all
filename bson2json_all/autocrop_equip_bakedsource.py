@@ -8,9 +8,9 @@ from extract_util import uwo_readjson, PATH, PATH_STATS_PASSIVE, PATH_STATS, PAT
 
 def autocrop_equip_bakedsource() -> None:
 
-    tmp_equip0 = f"D:/UWO/unpack/221125/Equip_Texture2D_0.png"
-    tmp_equip1 = f"D:/UWO/unpack/221125/Equip_Texture2D_1.png"
-    tmp_equip2 = f"D:/UWO/unpack/221125/Equip_Texture2D_2.png"
+    tmp_equip0 = f"D:/UWO/unpack/221221/Equip_Texture2D_3.png"
+    tmp_equip1 = f"D:/UWO/unpack/221221/Equip_Texture2D_4.png"
+    tmp_equip2 = f"D:/UWO/unpack/221221/Equip_Texture2D_5.png"
 
     fp0 = PIL.Image.open(tmp_equip0, 'r')
     fp1 = PIL.Image.open(tmp_equip1, 'r')
@@ -22,7 +22,7 @@ def autocrop_equip_bakedsource() -> None:
     # Icon_CEquip_<itemID>_<C/M/F>_Sprite.json
     # <itemID> is key of PATH_EQUIP
     # desc, specialStat, statEffect
-    tmp_Equips_js = f"D:/UWO/unpack/image_crop_221125/Atlas/Icon_Item/Equip/**/*.json"
+    tmp_Equips_js = f"D:/UWO/unpack/image_crop_221221/Atlas/Icon_Item/Equip/**/*.json"
 
     flist = glob.glob(tmp_Equips_js)
 

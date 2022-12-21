@@ -8,7 +8,7 @@ from extract_util import uwo_readjson, PATH, PATH_SHIPSLOT, PATH_STATS, PATH_STA
 
 def autocrop_shipparts_bakedsource() -> None:
     
-    bakedsource = f"D:/UWO/unpack/221125/Shipparts_Texture2D_0.png"
+    bakedsource = f"D:/UWO/unpack/221221/Shipparts_Texture2D_5.png"
 
     fp0 = PIL.Image.open(bakedsource, 'r')
     sp_all = uwo_readjson(os.path.join(PATH, PATH_SHIPSLOT))
@@ -17,7 +17,7 @@ def autocrop_shipparts_bakedsource() -> None:
 
     # "Name" -> "icon" in char_all
 
-    sp_js = f"D:/UWO/unpack/image_crop_221125/Atlas/Icon_Item/Shipparts/**/*.json"
+    sp_js = f"D:/UWO/unpack/image_crop_221221/Atlas/Icon_Item/Shipparts/**/*.json"
 
     flist = glob.glob(sp_js)
 
