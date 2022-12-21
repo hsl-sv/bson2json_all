@@ -2,6 +2,7 @@
 import json
 import os
 import csv
+import math
 
 PATH_ITEM = "Item_s*.json"
 PATH_STATS = "StatOperator_s*.json"
@@ -69,7 +70,7 @@ def extract_shiptier(tier:int) -> list:
                 }
 
             for j, stat in enumerate(ext_stats):
-                result_dict.update({stat_all[f"{stat['Type']}"]['desc']: stat['Val']})
+                result_dict.update({stat_all[f"{stat['Type']}"]['desc']: f"{math.ceil(stat['MinRate'] / 1000 * stat['Val'])}-{stat['Val']}"})
 
             if matav:
                 for k, mat in enumerate(ext_material):
