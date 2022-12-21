@@ -53,6 +53,12 @@ def extract_shiptier(tier:int) -> list:
         ext_id = blueprint['id']
         ext_shipid = blueprint['shipId']
         ext_stats = blueprint['stat']
+
+        if 'materialItem' in blueprint:
+            matav = True
+            ext_material = blueprint['materialItem']
+        else:
+            matav = False
         
         try:
             result_dict = {
@@ -61,8 +67,12 @@ def extract_shiptier(tier:int) -> list:
                 '티어': blueprint['tier'],
                 }
 
-            for i, stat in enumerate(ext_stats):
+            for j, stat in enumerate(ext_stats):
                 result_dict.update({stat_all[f"{stat['Type']}"]['desc']: stat['Val']})
+
+            if matav:
+                for k, mat in enumerate(ext_material):
+                    result_dict.update({item_all[f"{mat['Id']}"]['name']: mat['Val']})
 
             result.append(result_dict)
         except:
